@@ -58,7 +58,6 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
     startPoint,
     endPoint,
     startRadian,
-    radianValue,
     isRadialCircleVariant,
     centerValue,
   } = useRadialSlider(props);
@@ -156,15 +155,24 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
         {!isHideLines && <LineContent {...props} value={value} />}
         {!isHideSlider && (
           <>
-            <Path
-              strokeWidth={sliderWidth}
-              stroke={sliderTrackColor}
-              fill="none"
-              strokeLinecap={strokeLinecap}
-              d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${
-                startRadian - radianValue >= Math.PI ? '1' : '0'
-              },1,${endPoint.x},${endPoint.y}`}
-            />
+          <Path
+            strokeWidth={sliderWidth + 10}
+            stroke={'rgba(256,256,256,0.3)'}
+            fill="none"
+            strokeLinecap={strokeLinecap}
+            d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${
+              startRadian - currentRadian >= Math.PI ? '1' : '0'
+            },1,${endPoint.x},${endPoint.y}`}
+          />
+          <Path
+            strokeWidth={sliderWidth}
+            stroke={sliderTrackColor}
+            fill="none"
+            strokeLinecap={strokeLinecap}
+            d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${
+              startRadian - currentRadian >= Math.PI ? '1' : '0'
+            },1,${endPoint.x},${endPoint.y}`}
+          />
             <Path
               strokeWidth={sliderWidth}
               stroke="url(#gradient)"

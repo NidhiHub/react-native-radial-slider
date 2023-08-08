@@ -66,6 +66,7 @@ const useRadialSlider = (props: RadialSliderHookProps) => {
     thumbBorderWidth;
 
   const startRadian = 2 * Math.PI - radianValue;
+  const endRadian = Math.PI - radianValue + 1.5;
 
   const startPoint = polarToCartesian(
     startRadian,
@@ -76,7 +77,7 @@ const useRadialSlider = (props: RadialSliderHookProps) => {
   );
 
   const endPoint = polarToCartesian(
-    radianValue,
+    endRadian,
     radius,
     sliderWidth,
     thumbRadius,

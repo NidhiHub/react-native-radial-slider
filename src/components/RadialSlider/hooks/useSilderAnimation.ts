@@ -114,7 +114,7 @@ const useSilderAnimation = (props: RadialSliderAnimationHookProps) => {
     } else {
       nValue = moveStartValue + ratio * diff;
     }
-    nValue = Math.max(min, Math.min(max, nValue));
+    nValue = Math.max(min, Math.min(max / 3, nValue));
 
     setValue((prevState: number) => {
       prevValue.current = Math.round(
